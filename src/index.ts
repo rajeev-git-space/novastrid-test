@@ -3,6 +3,9 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import path from 'path';
 import multer from 'multer';
+import authRoutes from './routes/authRoutes';
+// import taskRoutes from './routes/taskRoutes';
+// import chatRoutes from './routes/chatRoutes';
 
 dotenv.config();
 
@@ -12,9 +15,9 @@ const PORT = process.env.PORT;
 
 const upload = multer({ dest: 'uploads/' });
 
-app.use('/auth', require('./routes/authRoutes'));
-app.use('/user', require('./routes/taskRoutes'));
-app.use('/chat', require('./routes/chatRoutes'));
+app.use('/auth', authRoutes);
+// app.use('/user', require('./routes/taskRoutes'));
+// app.use('/chat', require('./routes/chatRoutes'));
 
 app.get('/', (req: Request, res: Response) => {
     res.send('App Running at PORT: ' + PORT);
